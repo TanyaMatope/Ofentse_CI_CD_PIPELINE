@@ -1,0 +1,44 @@
+name: .NET Framework CI/CD
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-test-deploy:
+    runs-on: windows-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+    
+    - name: Setup .NET Framework
+      uses: actions/setup-dotnet@v2
+      with:
+        dotnet-version: '6.x'  # Change to your desired .NET Framework version
+        
+    - name: Restore NuGet packages
+      run: nuget restore WebApp1/WebApp1.sln
+    
+    - name: Build
+      run: msbuild WebApp1/WebApp1.sln /p:Configuration=Release
+    
+    - name: Test
+      run: vstest.console.exe WebApp1.Tests/bin/Release/WebApp1.Tests.dll
+    
+    # Add additional steps for code quality checks, such as code coverage and analysis
+    
+    - name: Publish Artifact
+      run: |
+        mkdir publish
+        xcopy WebApp1/bin/Release publish /E /Y
+    
+    - name: Deploy
+      run: |
+        # Add deployment steps here to deploy "WebApp1" to the staging environment
+        
+    - name: Notify on Failure
+      if: ${{ failure() }}
+      run: |
+        echo "Build or deployment failed for $GITHUB_REPOSITORY"
