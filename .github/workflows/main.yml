@@ -19,14 +19,10 @@ jobs:
         dotnet-version: '6.x'  # Change to your desired .NET Framework version
 
     - name: Restore NuGet packages
-      run: |
-        cd D:\a\Ofentse_CI_CD_PIPELINE\Ofentse_CI_CD_PIPELINE\WebApplication3 # Replace with the actual path to the folder containing WebApplication3.sln
-        dotnet restore WebApplication3.sln
+      run: dotnet restore ./WebApplication3/WebApplication3.sln
 
     - name: Build
-      run: |
-        cd D:\a\Ofentse_CI_CD_PIPELINE\Ofentse_CI_CD_PIPELINE\WebApplication3  # Replace with the actual path to the folder containing WebApplication3.sln
-        dotnet build WebApplication3.sln --configuration Release
+      run: dotnet build ./WebApplication3/WebApplication3.sln --configuration Release
 
   test:
     runs-on: windows-latest
@@ -35,9 +31,7 @@ jobs:
     # Similar setup and restore steps as the 'build' job
 
     - name: Test
-      run: |
-        cd D:\a\Ofentse_CI_CD_PIPELINE\Ofentse_CI_CD_PIPELINE\WebApplication3 # Replace with the actual path to the folder containing WebApplication3.sln
-        dotnet test WebApplication3.Tests/WebApplication3.Tests.csproj --configuration Release
+      run: dotnet test ./WebApplication3/WebApplication3.Tests/WebApplication3.Tests.csproj --configuration Release
 
   deploy:
     runs-on: windows-latest
