@@ -19,13 +19,13 @@ jobs:
         dotnet-version: '6.x'  # Change to your desired .NET Framework version
         
     - name: Restore NuGet packages
-      run: nuget restore WebApp1/WebApp1.sln
+      run: nuget restore WebApplication3/WebApp1.sln
     
     - name: Build
-      run: msbuild WebApp1/WebApp1.sln /p:Configuration=Release
+      run: msbuild WebApp1/WebApplication3.sln /p:Configuration=Release
     
     - name: Test
-      run: vstest.console.exe WebApp1.Tests/bin/Release/WebApp1.Tests.dll
+      run: vstest.console.exe WebApplication3.Tests/bin/Release/WebApplication3.Tests.dll
     
     # Add additional steps for code quality checks, such as code coverage and analysis
     
