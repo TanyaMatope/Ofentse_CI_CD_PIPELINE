@@ -19,10 +19,10 @@ jobs:
         dotnet-version: '6.x'  # Change to your desired .NET Framework version
         
     - name: Restore NuGet packages
-      run: nuget restore WebApplication3/WebApplication3.sln
+      run: nuget restore ./WebApplication3.sln.sln
     
     - name: Build
-      run: msbuild WebApp1/WebApplication3.sln /p:Configuration=Release
+      run: msbuild ./WebApplication3.sln /p:Configuration=Release
     
     - name: Test
       run: vstest.console.exe WebApplication3.Tests/bin/Release/WebApplication3.Tests.dll
