@@ -19,7 +19,7 @@ jobs:
         dotnet-version: '6.x'  # Change to your desired .NET Framework version
         
     - name: Restore NuGet packages
-      run: nuget restore ./WebApplication3.sln.sln
+      run: nuget restore ./WebApplication3.sln
     
     - name: Build
       run: msbuild ./WebApplication3.sln /p:Configuration=Release
@@ -36,7 +36,7 @@ jobs:
     
     - name: Deploy
       run: |
-        # Add deployment steps here to deploy "WebApp1" to the staging environment
+        # Add deployment steps here to deploy "WebApp" to the staging environment
         
     - name: Notify on Failure
       if: ${{ failure() }}
