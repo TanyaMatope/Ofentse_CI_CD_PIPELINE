@@ -20,12 +20,12 @@ jobs:
 
     - name: Restore NuGet packages
       run: |
-        cd path/to/solution/folder  # Replace with the actual path to the folder containing WebApplication3.sln
+        cd D:\a\Ofentse_CI_CD_PIPELINE\Ofentse_CI_CD_PIPELINE\WebApplication3 # Replace with the actual path to the folder containing WebApplication3.sln
         dotnet restore WebApplication3.sln
 
     - name: Build
       run: |
-        cd path/to/solution/folder  # Replace with the actual path to the folder containing WebApplication3.sln
+        cd D:\a\Ofentse_CI_CD_PIPELINE\Ofentse_CI_CD_PIPELINE\WebApplication3  # Replace with the actual path to the folder containing WebApplication3.sln
         dotnet build WebApplication3.sln --configuration Release
 
   test:
@@ -36,7 +36,7 @@ jobs:
 
     - name: Test
       run: |
-        cd path/to/solution/folder  # Replace with the actual path to the folder containing WebApplication3.sln
+        cd D:\a\Ofentse_CI_CD_PIPELINE\Ofentse_CI_CD_PIPELINE\WebApplication3 # Replace with the actual path to the folder containing WebApplication3.sln
         dotnet test WebApplication3.Tests/WebApplication3.Tests.csproj --configuration Release
 
   deploy:
